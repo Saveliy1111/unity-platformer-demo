@@ -37,8 +37,7 @@ public class PlayerDetector : MonoBehaviour
     {
         if (_castPoint == null) return;
         
-        Vector2 forwardDirection 
-        = DirectionUtils.GetForwardVector(transform, _orientation);
+        Vector2 forwardDirection = _orientation.ForwardVector;
 
         RaycastHit2D hit = Physics2D.Raycast(_castPoint.position, forwardDirection, _detectionRange, _playerLayer);
         if (hit.collider != null)
@@ -67,12 +66,11 @@ public class PlayerDetector : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (_castPoint == null) return;
+        if (_castPoint == null || _orientation == null) return;
 
         if (!HasAggro)
         {
-           Vector2 forwardDirection 
-           = DirectionUtils.GetForwardVector(transform, _orientation);
+           Vector2 forwardDirection = _orientation.ForwardVector;
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawRay(_castPoint.position, forwardDirection * _detectionRange);

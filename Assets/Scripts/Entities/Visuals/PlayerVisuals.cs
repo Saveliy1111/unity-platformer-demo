@@ -5,16 +5,20 @@ public class PlayerVisuals : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private GroundDetector _groundDetector;
+    private EntityStun _stunComponent;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _groundDetector = GetComponent<GroundDetector>();
+        _rigidbody = GetComponentInParent<Rigidbody2D>();
+        _groundDetector = GetComponentInParent<GroundDetector>();
+        _stunComponent = GetComponentInParent<EntityStun>();
     }
 
     void Update()
     {
+        if (_stunComponent != null && _stunComponent.IsStunned) return;
+
         UpdateAnimationParameters();
     }
 

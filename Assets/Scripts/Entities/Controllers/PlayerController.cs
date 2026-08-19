@@ -5,11 +5,20 @@ public class PlayerController : MonoBehaviour
 {
     private EntityMovement _movementComponent;
     private EntityJump _jumpComponent;
+    private EntityOrientation _orientation;
+    private Health _health;
 
     void Start()
     {
         _movementComponent = GetComponent<EntityMovement>();
         _jumpComponent = GetComponent<EntityJump>();
+        _orientation = GetComponent<EntityOrientation>();
+        _health = GetComponent<Health>();
+
+        if (_health != null)
+        {
+            _health.OnDeath += HandleDeath; 
+        }
     }
 
     void Update()
@@ -18,17 +27,15 @@ public class PlayerController : MonoBehaviour
         PerformJump();
     }
 
-    public void HandlePlayerDeath()
-    {
-        Debug.Log("You died!");
-        _movementComponent.SetDirection(0);
-        this.enabled = false;
-    }
-
     private void PerformMovement()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         _movementComponent.SetDirection(moveInput);
+
+        if (_orientation != null)
+        {
+            _orientation.SetFacingDirection(moveInput);
+        }
     }
 
     private void PerformJump()
@@ -36,6 +43,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             _jumpComponent.Jump();
+        }
+    }
+
+    private void HandleDeath()
+    {
+        _movementComponent.SetDirection(0);
+        this.enabled = false;
+    }
+    
+    private void OnDestroy()
+    {
+        if (_health != null)
+        {
+            _health.OnDeath -= HandleDeath; 
         }
     }
 }

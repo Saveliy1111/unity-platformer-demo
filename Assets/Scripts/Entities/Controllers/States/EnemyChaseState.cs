@@ -12,20 +12,16 @@ public class EnemyChaseState : StateMachineBehaviour
 
     private EnemyAIController _aiController;
     private EntityJump _jumpComponent;
-    private IEntityOrientation _orientation;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _aiController = animator.gameObject.GetComponent<EnemyAIController>();
-        _jumpComponent = animator.gameObject.GetComponent<EntityJump>();
-        _orientation = animator.GetComponent<IEntityOrientation>();
+        _aiController = animator.gameObject.GetComponentInParent<EnemyAIController>();
+        _jumpComponent = animator.gameObject.GetComponentInParent<EntityJump>();
 
         if (_aiController != null)
         {
             _aiController.MovementComponent.SetSpeed(_chaseSpeed);
         }
-
-        _jumpCooldownTimer.Start();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -35,6 +31,8 @@ public class EnemyChaseState : StateMachineBehaviour
         if (CheckLostAggro(animator)) return;
 
         ChaseTarget(animator);
+
+        animator.SetFloat("Speed", Mathf.Abs(_aiController.MovementComponent.DirectionX));
     }
 
     private bool CheckLostAggro(Animator animator)
@@ -62,7 +60,7 @@ public class EnemyChaseState : StateMachineBehaviour
 
         if (Mathf.Abs(distanceX) < _chaseDirectionDeadzoneX)
         {
-            directionToPlayer = DirectionUtils.GetForwardVector(_aiController.transform, _orientation).x;
+            directionToPlayer = _aiController.Orientation.ForwardVector.x;
         }
         else
         {
@@ -82,7 +80,7 @@ public class EnemyChaseState : StateMachineBehaviour
         }
         else if (_aiController.ObstaclesDetector.IsAbyss)
         {
-            HandleAbyss(animator);
+            HandleAbyss();
         }
         else if (_aiController.ObstaclesDetector.IsSafeDrop)
         {
@@ -101,31 +99,29 @@ public class EnemyChaseState : StateMachineBehaviour
         {
             animator.SetTrigger("jump");
             _jumpCooldownTimer.Start();
-            _aiController.MovementComponent.SetDirection(directionToPlayer);
+            _aiController.SetMovementDirection(directionToPlayer);
         }
         else
         {
-            _aiController.MovementComponent.SetDirection(0);
+            _aiController.SetMovementDirection(0);
         }
     }
 
-    private void HandleAbyss(Animator animator)
+    private void HandleAbyss()
     {
-        _aiController.MovementComponent.SetDirection(0);
-        animator.SetBool("isChasing", false);
+        _aiController.SetMovementDirection(0);
         _jumpCooldownTimer.Tick();
     }
 
     private void HandleSafeDrop(float directionToPlayer)
     {
-        _aiController.MovementComponent.SetDirection(directionToPlayer);
-        
+        _aiController.SetMovementDirection(directionToPlayer);
         _jumpCooldownTimer.Tick();
     }
 
     private void HandleClearPath(float directionToPlayer)
     {
-        _aiController.MovementComponent.SetDirection(directionToPlayer);
+        _aiController.SetMovementDirection(directionToPlayer);
         _jumpCooldownTimer.Tick();
     }
 }

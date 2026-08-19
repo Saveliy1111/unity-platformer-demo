@@ -40,12 +40,12 @@ public class ObstacleDetector : MonoBehaviour
 
     private void CheckForWall()
     {
-        Vector2 direction = DirectionUtils.GetForwardVector(transform, _orientation);
+        Vector2 forwardDirection = _orientation.ForwardVector;
         Vector2 castPos = _castPoint.position;
 
-        RaycastHit2D topHit = Physics2D.Raycast(castPos + new Vector2(0, _raySpacing), direction, _wallRayLength, _obstacleLayer);
-        RaycastHit2D midHit = Physics2D.Raycast(castPos, direction, _wallRayLength, _obstacleLayer);
-        RaycastHit2D botHit = Physics2D.Raycast(castPos - new Vector2(0, _raySpacing), direction, _wallRayLength, _obstacleLayer);
+        RaycastHit2D topHit = Physics2D.Raycast(castPos + new Vector2(0, _raySpacing), forwardDirection, _wallRayLength, _obstacleLayer);
+        RaycastHit2D midHit = Physics2D.Raycast(castPos, forwardDirection, _wallRayLength, _obstacleLayer);
+        RaycastHit2D botHit = Physics2D.Raycast(castPos - new Vector2(0, _raySpacing), forwardDirection, _wallRayLength, _obstacleLayer);
         
         IsHittingWall = topHit.collider != null || midHit.collider != null || botHit.collider != null;
     }
@@ -78,15 +78,15 @@ public class ObstacleDetector : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (_castPoint == null) return;
+        if (_castPoint == null || _orientation == null) return;
 
-        Vector2 direction = DirectionUtils.GetForwardVector(transform, _orientation);
+        Vector2 forwardDirection = _orientation.ForwardVector;
         Vector2 castPos = _castPoint.position;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(castPos + new Vector2(0, _raySpacing), direction * _wallRayLength);
-        Gizmos.DrawRay(castPos, direction * _wallRayLength);
-        Gizmos.DrawRay(castPos - new Vector2(0, _raySpacing), direction * _wallRayLength);
+        Gizmos.DrawRay(castPos + new Vector2(0, _raySpacing), forwardDirection * _wallRayLength);
+        Gizmos.DrawRay(castPos, forwardDirection * _wallRayLength);
+        Gizmos.DrawRay(castPos - new Vector2(0, _raySpacing), forwardDirection * _wallRayLength);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(castPos, Vector2.down * _edgeRayLength);

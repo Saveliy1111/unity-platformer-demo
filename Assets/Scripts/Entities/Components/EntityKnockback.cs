@@ -5,14 +5,15 @@ public class EntityKnockback : MonoBehaviour
 {
     [Header("Knockback Settings")]
     [SerializeField] private float _knockbackForce = 5f;
+    [SerializeField] private float _knockbackVelocityY = 0.5f;
     [SerializeField] private float _stunDuration = 0.2f;
 
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidbody;
     private EntityStun _stunComponent;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _stunComponent = GetComponent<EntityStun>();
     }
 
@@ -20,13 +21,13 @@ public class EntityKnockback : MonoBehaviour
     {
         if (attackerTransform == null) return;
 
-        Vector2 knockbackdirection = (transform.position - attackerTransform.position).normalized;
-        knockbackdirection.y = 0.5f; 
-        knockbackdirection = knockbackdirection.normalized;
+        Vector2 knockbackDirection = (transform.position - attackerTransform.position).normalized;
+        knockbackDirection.y = _knockbackVelocityY; 
+        knockbackDirection = knockbackDirection.normalized;
 
 
-        _rb.linearVelocity = Vector2.zero;
-        _rb.AddForce(knockbackdirection * _knockbackForce, ForceMode2D.Impulse);
+        _rigidbody.linearVelocity = Vector2.zero;
+        _rigidbody.AddForce(knockbackDirection * _knockbackForce, ForceMode2D.Impulse);
 
         if (_stunComponent != null)
         {

@@ -1,4 +1,6 @@
+using UnityEngine;
 public interface IEntityOrientation
 {
-    bool FacesLeftByDefault { get; }
+    float FacingDirection { get; }
+    Vector2 ForwardVector { get; }
 }

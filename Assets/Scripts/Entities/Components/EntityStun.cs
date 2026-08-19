@@ -3,21 +3,20 @@ using UnityEngine;
 public class EntityStun : MonoBehaviour
 {
     public bool IsStunned { get; private set; }
-    
-    private float _stunTimer;
+
+    private CooldownTimer _stunTimer = new CooldownTimer();
 
     public void Stun(float duration)
     {
-        _stunTimer = duration;
+        _stunTimer.StartCooldown(duration);
         IsStunned = true;
     }
 
     private void Update()
     {
-        if (_stunTimer > 0)
+        if (IsStunned)
         {
-            _stunTimer -= Time.deltaTime;
-            if (_stunTimer <= 0)
+            if (_stunTimer.Tick())
             {
                 IsStunned = false;
             }
