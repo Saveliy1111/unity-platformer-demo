@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,14 +8,16 @@ public class Health : MonoBehaviour
     [SerializeField] private int _maxHealth = 3;
 
     private int _currentHealth;
-    private bool _isDead;
+    public bool IsDead { get; private set; }
     private EntityKnockback _knockbackComponent;
 
+    public event Action OnTakeDamage;
+    public event Action OnDeath;
 
-    [Header ("Events")]
-    public UnityEvent<int> OnHealthChanged;
-    public UnityEvent OnTakeDamage;
-    public UnityEvent OnDeath;
+    [Header ("Events (For UI & Visuals)")]
+    public UnityEvent<int> OnHealthChangedVisuals;
+    public UnityEvent OnTakeDamageVisuals;
+    public UnityEvent OnDeathVisuals;
 
     void Start()
     {      
@@ -25,9 +28,9 @@ public class Health : MonoBehaviour
     public void ResetHealth()
     {
         _currentHealth = _maxHealth;
-        _isDead = false;
+        IsDead = false;
 
-        OnHealthChanged?.Invoke(_currentHealth);
+        OnHealthChangedVisuals?.Invoke(_currentHealth);
     }
 
     public void TakeDamage(int damage)
@@ -37,12 +40,13 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage, Transform attackerTransform)
     {
-        if (!_isDead)
+        if (!IsDead)
         {
             _currentHealth -= damage;
+            OnHealthChangedVisuals?.Invoke(_currentHealth);
 
             OnTakeDamage?.Invoke();
-            OnHealthChanged?.Invoke(_currentHealth);
+            OnTakeDamageVisuals?.Invoke();
 
             if (attackerTransform != null && _knockbackComponent != null)
             {
@@ -58,7 +62,8 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        _isDead = true;
+        IsDead = true;
         OnDeath?.Invoke();
+        OnDeathVisuals?.Invoke();
     }
 }

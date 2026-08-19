@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPatrolState : StateMachineBehaviour
@@ -5,23 +6,24 @@ public class EnemyPatrolState : StateMachineBehaviour
     [Header("Patrol Settings")]
     [SerializeField] private float _patrolSpeed = 2f;
     [SerializeField] private RandomTimer _patrolTimer;
+    [SerializeField] private CooldownTimer _turnCooldownTimer = new CooldownTimer();
+    [SerializeField] private float _turnCooldown = 0.3f;
 
     private EnemyAIController _aiController;
-    private IEntityOrientation _orientation;
     private float _currentDirection;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       _aiController = animator.gameObject.GetComponent<EnemyAIController>();
-       _orientation = animator.GetComponent<IEntityOrientation>();
+       _aiController = animator.gameObject.GetComponentInParent<EnemyAIController>();
 
        if (_aiController != null)
        {
            _aiController.MovementComponent.SetSpeed(_patrolSpeed);
-           _currentDirection = DirectionUtils.GetForwardVector(_aiController.transform, _orientation).x;
+           _currentDirection = _aiController.Orientation.ForwardVector.x;
        }
 
        _patrolTimer.Start();
+       _turnCooldownTimer.StartCooldown(0f);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -31,7 +33,7 @@ public class EnemyPatrolState : StateMachineBehaviour
         if (CheckForAggro(animator)) return;
 
         CheckForObstacles();
-        _aiController.MovementComponent.SetDirection(_currentDirection);
+        _aiController.SetMovementDirection(_currentDirection);
 
         CheckTimer(animator);
     }
@@ -40,7 +42,7 @@ public class EnemyPatrolState : StateMachineBehaviour
     {
         if (_aiController != null)
         {
-            _aiController.MovementComponent.SetDirection(0);
+            _aiController.SetMovementDirection(0);
         }
     }
 
@@ -51,6 +53,7 @@ public class EnemyPatrolState : StateMachineBehaviour
                 if (_aiController.ObstaclesDetector.IsHittingWall || _aiController.ObstaclesDetector.IsLedge)
                 {
                     _currentDirection *= -1;
+                    _turnCooldownTimer.StartCooldown(0.3f);
                 }
             }
     }
