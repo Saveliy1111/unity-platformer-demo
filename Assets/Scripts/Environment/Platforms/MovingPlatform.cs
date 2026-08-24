@@ -6,42 +6,56 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private Transform[] _waypoints;
     
+    private Vector2[] _cachedTargetPositions;
     private int _currentWaypointIndex = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Start()
     {
+        _cachedTargetPositions = new Vector2[_waypoints.Length];
+
+        for (int i = 0; i < _waypoints.Length; i++)
+        {
+            if (_waypoints[i] != null)
+            {
+                _cachedTargetPositions[i] = _waypoints[i].position;
+                Destroy(_waypoints[i].gameObject);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (_cachedTargetPositions == null || _cachedTargetPositions.Length == 0) return;
+
+        Vector2 targetPosition = _cachedTargetPositions[_currentWaypointIndex];
         
+        MoveTowardsWaypoint(targetPosition);
+        CheckIfWaypointReached(targetPosition);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_waypoints.Length == 0) return;
-
-        Transform targetWaypoint = _waypoints[_currentWaypointIndex];
-        MoveTowardsWaypoint(targetWaypoint);
-        CheckIfWaypointReached(targetWaypoint);
-    }
-
-    private void MoveTowardsWaypoint(Transform targetWaypoint)
+    private void MoveTowardsWaypoint(Vector2 targetPosition)
     {
         transform.position = Vector2.MoveTowards(
             transform.position,
-            targetWaypoint.position,
+            targetPosition,
             _moveSpeed * Time.deltaTime
         );
     }
 
-    private void CheckIfWaypointReached(Transform targetWaypoint)
+    private void CheckIfWaypointReached(Vector2 targetPosition)
     {
-         if (Vector2.Distance(transform.position, targetWaypoint.position) < 0.1f)
+         if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
         {
-            _currentWaypointIndex++;
-            if (_currentWaypointIndex >= _waypoints.Length)
-            {
-                _currentWaypointIndex = 0;
-            }
+            SwitchToNextWaypoint();
+        }
+    }
 
+    private void SwitchToNextWaypoint()
+    {
+        _currentWaypointIndex++;
+        if (_currentWaypointIndex >= _cachedTargetPositions.Length)
+        {
+            _currentWaypointIndex = 0;
         }
     }
 
@@ -50,6 +64,10 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag(Constants.PLAYER_TAG))
         {
             collision.gameObject.transform.SetParent(transform);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) 
+        {
+            SwitchToNextWaypoint();
         }
     }
 

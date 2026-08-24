@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageOnTouch : MonoBehaviour
+public class DamageOnTouch : MonoBehaviour, IOnDeathListener
 {
     [Header("Damage Settings")]
     [SerializeField] private int _damage = 1;
@@ -29,5 +29,10 @@ public class DamageOnTouch : MonoBehaviour
                 targetHealth.TakeDamage(_damage, transform);
             }
         }
+    }
+
+    public void HandleDeath()
+    {
+        this.enabled = false;
     }
 }

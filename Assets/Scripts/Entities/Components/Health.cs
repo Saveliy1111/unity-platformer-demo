@@ -8,8 +8,11 @@ public class Health : MonoBehaviour
     [SerializeField] private int _maxHealth = 3;
 
     private int _currentHealth;
-    public bool IsDead { get; private set; }
+    public int CurrentHealth => _currentHealth;
+
     private EntityKnockback _knockbackComponent;
+    
+    public bool IsDead { get; private set; }
 
     public event Action OnTakeDamage;
     public event Action OnDeath;

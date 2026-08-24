@@ -15,6 +15,7 @@ public class PlayerHUD : MonoBehaviour
 
     public void UpdateHearts(int currentHealth)
     {
+        Debug.Log("HUD получава сигнал за кръв: " + currentHealth);
         for (int i = 0; i < _heartImages.Length; i++)
         {
             if (i < currentHealth)

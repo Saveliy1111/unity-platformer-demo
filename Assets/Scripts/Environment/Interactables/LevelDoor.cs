@@ -4,15 +4,15 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider2D))]
 public class LevelDoor : MonoBehaviour
 {
+    private bool _isPlayerNear = false;
+    private bool _isUnlocked = false;
+
     [Header("Interaction Events")]
     public UnityEvent OnUnlockAttempt;
     public UnityEvent OnEnterAttempt;
 
     [Header("Visual/Audio Events")]
     public UnityEvent OnDoorUnlocked;
-
-    private bool _isPlayerNear = false;
-    private bool _isUnlocked = false;
 
     void Update()
     {

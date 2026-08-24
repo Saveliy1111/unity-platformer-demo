@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EntityMovement : MonoBehaviour
+public class EntityMovement : MonoBehaviour, IOnDeathListener
 {
     [Header("Movement Settings")]
     [SerializeField] private float _speed = 2f;
@@ -36,5 +36,11 @@ public class EntityMovement : MonoBehaviour
 
         _rigidbody.linearVelocity 
         = new Vector2(DirectionX * _speed, _rigidbody.linearVelocity.y);
+    }
+
+    public void HandleDeath()
+    {
+        SetDirection(0);
+        this.enabled = false;
     }
 }

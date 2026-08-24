@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fd767b3ae1a574c938dfd9393a0191, type: 3}
+  m_Name: DefaultLevelSettings
+  m_EditorClassIdentifier: GameAssembly::LevelGenerationSettings
+  GroundPrefab: {fileID: 3789653039999481891, guid: cfde2ac445849294b842d0a4ecdda87d, type: 3}
+  NormalPlatformPrefab: {fileID: 3444315499167122418, guid: 7a5494b2af2bb8549a3410f23afb8980, type: 3}
+  FallingPlatformPrefab: {fileID: 4704739065939297439, guid: e907e0b4a91097a49ac891b16fc16e4d, type: 3}
+  MovingPlatformPrefab: {fileID: 2631336900844616052, guid: c867c729875f5c94bba1498ea8637371, type: 3}
+  NumberOfChunks: 10
+  ChunkWidth: 24
+  MinGapWidth: 8
+  MaxGapWidth: 24
+  NoiseScale: 0.1
+  HeightMultiplier: 50
+  NormalPlatformChance: 0.5
+  FallingPlatformChance: 0.3
+  MovingPlatformChance: 0.2

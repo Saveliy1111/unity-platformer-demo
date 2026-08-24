@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityJump : MonoBehaviour
 {
     [Header("Jump Settings")]
     [SerializeField] private float _jumpForce = 7.5f;
+
+    [Header("Events (For UI & Visuals)")]
+    public UnityEvent OnJumpVisuals;
 
     private Rigidbody2D _rigidbody;
     private GroundDetector _groundDetector;
@@ -19,6 +23,7 @@ public class EntityJump : MonoBehaviour
         if (_groundDetector.isGrounded)
         {
             _rigidbody.AddForce(new Vector2(0, _jumpForce), ForceMode2D.Impulse);
+            OnJumpVisuals?.Invoke();
         }
     }
 }

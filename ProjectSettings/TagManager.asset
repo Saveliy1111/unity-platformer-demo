@@ -11,12 +11,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - BackgroundDecorations
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - DeadEnemy
+  - Player
   - 
   - 
   - 

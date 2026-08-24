@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1312121988929011282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8139495769171000024}
+  m_Layer: 6
+  m_Name: Point_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8139495769171000024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312121988929011282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2413, y: 0.202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3978310504293248622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1622040520018635871
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5622822426556149358}
   - component: {fileID: 4202320964286743911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8151451671205826204}
   - component: {fileID: 2319518729677534676}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,6 +224,7 @@ GameObject:
   - component: {fileID: 8294689769827741041}
   - component: {fileID: 888262272506378397}
   - component: {fileID: 3627205161986692478}
+  - component: {fileID: 8222900386123493761}
   m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
@@ -218,6 +250,7 @@ Transform:
   - {fileID: 3335831917723813411}
   - {fileID: 8151451671205826204}
   - {fileID: 5795877179654749594}
+  - {fileID: 3978310504293248622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &888262272506378397
@@ -313,7 +346,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -1.0739299}
+  m_Offset: {x: 0.0003631264, y: -1.0739299}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -323,8 +356,82 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7, y: 2.5578601}
+  m_Size: {x: 0.70072615, y: 2.5578601}
   m_EdgeRadius: 0
+--- !u!114 &8222900386123493761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789653039999481891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bdac10e4c822d418be4b8c7a2134ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::TilePopulator
+  _spawnPoints:
+  - {fileID: 8182311726148718045}
+  - {fileID: 1795222088486811513}
+  - {fileID: 8139495769171000024}
+  _decorations:
+  - {fileID: 1511010710839904420, guid: b637278a440598044811dd11ea508185, type: 3}
+  - {fileID: 329341419126240335, guid: b98d05f8b748f2441905b553e7d52a19, type: 3}
+  - {fileID: 6020835433472642088, guid: d69425b9c0db6d74696eb3cae4491de9, type: 3}
+  - {fileID: 4564350294169447954, guid: 9da3a211001ee594e9019eafa86a0f61, type: 3}
+  - {fileID: 520660194376862963, guid: 9d38b6fc7757a4c4192af300c921460c, type: 3}
+  - {fileID: 8246813124671489725, guid: 04a71855a8ed08e478d8da4feaca2c72, type: 3}
+  - {fileID: 967255267543977113, guid: 87d75ad01958f414bbbd1ba07ebb97df, type: 3}
+  - {fileID: 8498443234136203418, guid: 7cfb2130d791e814385418cd2662d877, type: 3}
+  - {fileID: 7066562848435775617, guid: 25f2964e22b56ed40968386f186de81f, type: 3}
+  - {fileID: 897205393826095969, guid: 87b4671fec319a84b97d51a033ba10b1, type: 3}
+  - {fileID: 5920944968512558781, guid: 44d30be01b94e41468234a99b93747f4, type: 3}
+  - {fileID: 187823783189556281, guid: 8121f1826c0e30c40b15d0090306bf2c, type: 3}
+  - {fileID: 4600199639712038205, guid: e7390ae7566b36547af6418567ebda3f, type: 3}
+  - {fileID: 870388377928414174, guid: 54f60a76243882a458147f3847701309, type: 3}
+  - {fileID: 8767478512010534874, guid: b7b494de04a4d614cb79324f32fdf161, type: 3}
+  - {fileID: 7083930152665911992, guid: 3f1b0fa4c9c41124f86bf59abfbc2b0c, type: 3}
+  - {fileID: 5726374096355764541, guid: 04b42265ac31d494a85022a7d1313052, type: 3}
+  - {fileID: 963704113271740526, guid: 18bcdf5d225c05f4f99d3a93c81121d1, type: 3}
+  - {fileID: 3430623250513805306, guid: e4181c92e03ea0f47b647cccb28de455, type: 3}
+  - {fileID: 1495934520353815819, guid: b20da74af828336499811dab40f16529, type: 3}
+  - {fileID: 5169130180309026600, guid: 6b81c2870bd5c334caff771475d2645f, type: 3}
+  - {fileID: 4024125383479709330, guid: a03d449c400e26c42bc963d22c6216a4, type: 3}
+  - {fileID: 9199984049080639645, guid: f48d65009fc0efe4bafa8487ff85c341, type: 3}
+  _enemies:
+  - {fileID: 9138448142396076429, guid: 8d9948742aa6f67498257fba2c3dabd1, type: 3}
+  _enemySpawnChance: 0.2
+--- !u!1 &4197591678357329392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8182311726148718045}
+  m_Layer: 6
+  m_Name: Point_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8182311726148718045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197591678357329392}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2024, y: 0.202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3978310504293248622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4858079257539437447
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5795877179654749594}
   - component: {fileID: 6774867102107869472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,6 +523,71 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &6057706680553993130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795222088486811513}
+  m_Layer: 6
+  m_Name: Point_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1795222088486811513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057706680553993130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0447, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3978310504293248622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6215537161997146413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3978310504293248622}
+  m_Layer: 6
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3978310504293248622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215537161997146413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8182311726148718045}
+  - {fileID: 1795222088486811513}
+  - {fileID: 8139495769171000024}
+  m_Father: {fileID: 8294689769827741041}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7603519532186390937
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3335831917723813411}
   - component: {fileID: 5086506420248829425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2586886039984146435}
   - component: {fileID: 4718404449403027433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

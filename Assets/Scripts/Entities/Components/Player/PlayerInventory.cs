@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class PlayerInventory : MonoBehaviour
 {
     private int _keysCollected = 0;
+    
     [Header("Events")]
     public UnityEvent<int> OnKeysChanged;
 

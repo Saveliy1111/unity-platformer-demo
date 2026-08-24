@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(EntityMovement))]
 public class PlayerController : MonoBehaviour
@@ -7,6 +8,35 @@ public class PlayerController : MonoBehaviour
     private EntityJump _jumpComponent;
     private EntityOrientation _orientation;
     private Health _health;
+
+    private PlayerInputActions _inputActions; 
+
+    private void Awake()
+    {
+        _inputActions = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        if (_inputActions == null)
+        {
+            _inputActions = new PlayerInputActions();
+        }
+        
+        _inputActions.Enable();
+
+        _inputActions.Player.Move.performed += OnMovePerformed;
+        _inputActions.Player.Move.canceled += OnMoveCanceled;
+        _inputActions.Player.Jump.performed += OnJumpPerformed;
+    }
+
+    private void OnDisable()
+    {
+        _inputActions.Disable();
+        _inputActions.Player.Move.performed -= OnMovePerformed;
+        _inputActions.Player.Move.canceled -= OnMoveCanceled;
+        _inputActions.Player.Jump.performed -= OnJumpPerformed;
+    }
 
     void Start()
     {
@@ -21,15 +51,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        PerformMovement();
-        PerformJump();
-    }
-
-    private void PerformMovement()
-    {
-        float moveInput = Input.GetAxisRaw("Horizontal");
+        float moveInput = context.ReadValue<float>(); 
         _movementComponent.SetDirection(moveInput);
 
         if (_orientation != null)
@@ -38,9 +62,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PerformJump()
+    private void OnMoveCanceled(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Jump"))
+        _movementComponent.SetDirection(0f);
+    }
+
+    private void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        if (_jumpComponent != null)
         {
             _jumpComponent.Jump();
         }
@@ -48,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDeath()
     {
-        _movementComponent.SetDirection(0);
+        _inputActions.Disable();
         this.enabled = false;
     }
     

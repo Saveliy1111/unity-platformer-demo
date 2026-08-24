@@ -8,7 +8,6 @@ public class EnemyChaseState : StateMachineBehaviour
 
     [Header("Tolerances")]
     [SerializeField] private float _chaseDirectionDeadzoneX = 0.2f;
-    [SerializeField] private float _yMinDepthForSafeDrop = 0.2f;
 
     private EnemyAIController _aiController;
     private EntityJump _jumpComponent;

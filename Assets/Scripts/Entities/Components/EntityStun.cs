@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EntityStun : MonoBehaviour
 {
-    public bool IsStunned { get; private set; }
-
     private CooldownTimer _stunTimer = new CooldownTimer();
+    
+    public bool IsStunned { get; private set; }
 
     public void Stun(float duration)
     {

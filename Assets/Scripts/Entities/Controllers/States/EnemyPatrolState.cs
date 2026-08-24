@@ -53,7 +53,7 @@ public class EnemyPatrolState : StateMachineBehaviour
                 if (_aiController.ObstaclesDetector.IsHittingWall || _aiController.ObstaclesDetector.IsLedge)
                 {
                     _currentDirection *= -1;
-                    _turnCooldownTimer.StartCooldown(0.3f);
+                    _turnCooldownTimer.StartCooldown(_turnCooldown);
                 }
             }
     }

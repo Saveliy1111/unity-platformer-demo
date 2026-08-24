@@ -414,7 +414,7 @@ MonoBehaviour:
   _castPoint: {fileID: 6286637037044664946}
   _playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   _detectionRange: 4
   _aggroRadius: 8
 --- !u!114 &1464481212856730970
@@ -509,6 +509,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  OnLandVisuals:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7977781607172016876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityJump
   _jumpForce: 6.7
+  OnJumpVisuals:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4234298966043183118
 MonoBehaviour:
   m_ObjectHideFlags: 0
