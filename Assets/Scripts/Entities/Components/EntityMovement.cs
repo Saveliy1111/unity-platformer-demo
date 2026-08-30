@@ -3,18 +3,15 @@ using UnityEngine;
 public class EntityMovement : MonoBehaviour, IOnDeathListener
 {
     [Header("Movement Settings")]
-    [SerializeField] private float _speed = 2f;
-
-    private Rigidbody2D _rigidbody;
-    private EntityStun _stunComponent;
+    [SerializeField] private float _maxSpeed = 5f;
+    [SerializeField] private float _acceleration = 20f;
+    [SerializeField] private float _deceleration = 30f;
 
     public float DirectionX { get; private set; }
 
-    void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _stunComponent = GetComponent<EntityStun>();
-    }
+    private Rigidbody2D _rigidbody;
+    private EntityStun _stunComponent;
+    private bool _isLocked = false;
 
     public void SetDirection(float directionX)
     {
@@ -23,24 +20,48 @@ public class EntityMovement : MonoBehaviour, IOnDeathListener
 
     public void SetSpeed(float newSpeed)
     {
-        _speed = newSpeed;
+        _maxSpeed = newSpeed;
     }
 
-
-    private void FixedUpdate()
+    void Start()
     {
-        if (_stunComponent != null && _stunComponent.IsStunned)
-        {
-            return;
-        }
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _stunComponent = GetComponent<EntityStun>();
+    }
 
-        _rigidbody.linearVelocity 
-        = new Vector2(DirectionX * _speed, _rigidbody.linearVelocity.y);
+    void FixedUpdate()
+    {
+        if (_stunComponent != null && _stunComponent.IsStunned) return;
+        if (_isLocked) return;
+        
+
+        float newVelocityX = CalculateVelocityX();
+        _rigidbody.linearVelocity = new Vector2(newVelocityX, _rigidbody.linearVelocity.y);
+    }
+
+    public void LockMovement()
+    {
+        _isLocked = true;
+        SetDirection(0f);
+    }
+
+    public void UnlockMovement()
+    {
+        _isLocked = false;
     }
 
     public void HandleDeath()
     {
-        SetDirection(0);
+        LockMovement();
         this.enabled = false;
+    }
+
+    private float CalculateVelocityX()
+    {
+        float targetSpeed = DirectionX * _maxSpeed;
+        float currentAccel = (Mathf.Abs(DirectionX) > 0.01f) ? _acceleration : _deceleration;
+        float newVelocityX = Mathf.MoveTowards(_rigidbody.linearVelocity.x, targetSpeed, currentAccel * Time.fixedDeltaTime);
+
+        return newVelocityX;
     }
 }

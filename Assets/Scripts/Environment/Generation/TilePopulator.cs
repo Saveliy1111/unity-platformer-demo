@@ -3,7 +3,6 @@ using UnityEngine;
 public class TilePopulator : MonoBehaviour
 {
     [Header("Spawn Points")]
-    [Tooltip("Масив с точките (SpawnPoints), разположени върху този Tile")]
     [SerializeField] private Transform[] _spawnPoints;
 
     [Header("Spawnable Objects")]

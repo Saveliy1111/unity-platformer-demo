@@ -17,14 +17,10 @@ public class LevelGenerator : MonoBehaviour
 
         Transform levelContainer = new GameObject("GeneratedLevel").transform;
 
-        // --- ФАЗА 1: Макро-генериране (Големи Ground масиви) ---
         List<Vector2> chunkPositions = TerrainBuilder.BuildMacroTerrain(_settings);
         SpawnMacroTerrain(chunkPositions, levelContainer);
 
-        // --- ФАЗА 2: Микро-генериране (Платформи в пропастите) ---
         SpawnPlatforms(chunkPositions, levelContainer);
-
-        Debug.Log("--- Генерирането приключи успешно ---");
     }
 
     private void SpawnMacroTerrain(List<Vector2> chunkPositions, Transform container)

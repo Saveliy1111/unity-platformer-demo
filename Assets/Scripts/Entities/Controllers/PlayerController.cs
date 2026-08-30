@@ -1,91 +1,80 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(EntityMovement))]
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(EntityJump))]
+public class PlayerController : MonoBehaviour, IPlayerActiveListener
 {
-    private EntityMovement _movementComponent;
-    private EntityJump _jumpComponent;
-    private EntityOrientation _orientation;
+    private EntityMovement _movement;
+    private EntityJump _jump;
     private Health _health;
+    private bool _isActive = false;
 
-    private PlayerInputActions _inputActions; 
 
-    private void Awake()
+    void Awake()
     {
-        _inputActions = new PlayerInputActions();
-    }
-
-    private void OnEnable()
-    {
-        if (_inputActions == null)
-        {
-            _inputActions = new PlayerInputActions();
-        }
-        
-        _inputActions.Enable();
-
-        _inputActions.Player.Move.performed += OnMovePerformed;
-        _inputActions.Player.Move.canceled += OnMoveCanceled;
-        _inputActions.Player.Jump.performed += OnJumpPerformed;
-    }
-
-    private void OnDisable()
-    {
-        _inputActions.Disable();
-        _inputActions.Player.Move.performed -= OnMovePerformed;
-        _inputActions.Player.Move.canceled -= OnMoveCanceled;
-        _inputActions.Player.Jump.performed -= OnJumpPerformed;
+        _movement = GetComponent<EntityMovement>();
+        _jump = GetComponent<EntityJump>();
+        _health = GetComponent<Health>();
     }
 
     void Start()
     {
-        _movementComponent = GetComponent<EntityMovement>();
-        _jumpComponent = GetComponent<EntityJump>();
-        _orientation = GetComponent<EntityOrientation>();
-        _health = GetComponent<Health>();
-
-        if (_health != null)
+        if (InputManager.Instance != null)
         {
-            _health.OnDeath += HandleDeath; 
+            InputManager.Instance.OnMove += HandleMove;
+            InputManager.Instance.OnMoveCanceled += HandleMoveCanceled;
+            InputManager.Instance.OnJump += HandleJump;
+            InputManager.Instance.OnJumpCanceled += HandleJumpCanceled;
         }
     }
 
-    private void OnMovePerformed(InputAction.CallbackContext context)
+    void OnDestroy()
     {
-        float moveInput = context.ReadValue<float>(); 
-        _movementComponent.SetDirection(moveInput);
-
-        if (_orientation != null)
+        if (InputManager.Instance != null)
         {
-            _orientation.SetFacingDirection(moveInput);
+            InputManager.Instance.OnMove -= HandleMove;
+            InputManager.Instance.OnMoveCanceled -= HandleMoveCanceled;
+            InputManager.Instance.OnJump -= HandleJump;
+            InputManager.Instance.OnJumpCanceled -= HandleJumpCanceled;
         }
     }
 
-    private void OnMoveCanceled(InputAction.CallbackContext context)
+    public void OnActiveStateChanged(bool isActive)
     {
-        _movementComponent.SetDirection(0f);
-    }
+        _isActive = isActive;
 
-    private void OnJumpPerformed(InputAction.CallbackContext context)
-    {
-        if (_jumpComponent != null)
+        if (!_isActive && _movement != null)
         {
-            _jumpComponent.Jump();
+            _movement.SetDirection(0f);
         }
     }
 
-    private void HandleDeath()
+    private bool IsDead()
     {
-        _inputActions.Disable();
-        this.enabled = false;
+        return _health != null && _health.IsDead;
     }
-    
-    private void OnDestroy()
+
+    private void HandleMove(float direction)
     {
-        if (_health != null)
-        {
-            _health.OnDeath -= HandleDeath; 
-        }
+        if (!_isActive || IsDead()) return;
+        _movement.SetDirection(direction);
+    }
+
+    private void HandleMoveCanceled()
+    {
+        if (!_isActive || IsDead()) return;
+        _movement.SetDirection(0f);
+    }
+
+    private void HandleJump()
+    {
+        if (!_isActive || IsDead()) return;
+        _jump.Jump();
+    }
+
+    private void HandleJumpCanceled()
+    {
+        if (!_isActive || IsDead()) return;
+        _jump.CancelJump(); 
     }
 }

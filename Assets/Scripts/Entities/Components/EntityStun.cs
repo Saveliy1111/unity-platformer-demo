@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EntityStun : MonoBehaviour
 {
-    private CooldownTimer _stunTimer = new CooldownTimer();
+    private CountdownTimer _stunTimer = new CountdownTimer();
     
     public bool IsStunned { get; private set; }
 
     public void Stun(float duration)
     {
-        _stunTimer.StartCooldown(duration);
+        _stunTimer.StartCountdown(duration);
         IsStunned = true;
     }
 
@@ -16,7 +16,8 @@ public class EntityStun : MonoBehaviour
     {
         if (IsStunned)
         {
-            if (_stunTimer.Tick())
+            _stunTimer.Tick();
+            if (_stunTimer.IsFinished)
             {
                 IsStunned = false;
             }

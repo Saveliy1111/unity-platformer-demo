@@ -6,7 +6,7 @@ public class GroundDetector : MonoBehaviour
     [Header("Ground Check Settings")]
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundCheckRadius = 0.4f;
-    [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _environmentLayer;
 
     [Header("Events (For UI & Visuals)")]
     public UnityEvent OnLandVisuals;
@@ -18,7 +18,7 @@ public class GroundDetector : MonoBehaviour
     void Update()
     {
         isGrounded 
-        = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
+        = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _environmentLayer);
 
         if (!_wasGrounded && isGrounded)  OnLandVisuals?.Invoke();
 

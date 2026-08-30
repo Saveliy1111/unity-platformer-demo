@@ -595,10 +595,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseState
   _chaseSpeed: 4
   _jumpCooldownTimer:
-    _minTime: 1
-    _maxTime: 2.5
+    _minTime: 0.5
+    _maxTime: 1.5
   _chaseDirectionDeadzoneX: 0.2
-  _yMinDepthForSafeDrop: 0.2
 --- !u!114 &4022823067594499797
 MonoBehaviour:
   m_ObjectHideFlags: 1

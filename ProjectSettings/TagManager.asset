@@ -11,18 +11,18 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - BackgroundDecorations
+  - 
   - Water
   - UI
-  - Ground
-  - DeadEnemy
+  - 
+  - 
+  - Environment
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemies
+  - PlayerProjectiles
+  - EnemyProjectiles
+  - Interactables
+  - DeadEnemies
   - 
   - 
   - 
@@ -46,6 +46,15 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackgDeocrations
+    uniqueID: 1317281127
+    locked: 0
+  - name: Entities
+    uniqueID: 2797126189
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1007621027
     locked: 0
   m_RenderingLayers:
   - Default

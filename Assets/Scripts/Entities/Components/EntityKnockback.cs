@@ -10,11 +10,13 @@ public class EntityKnockback : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private EntityStun _stunComponent;
+    private EntityWeight _weightComponent;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _stunComponent = GetComponent<EntityStun>();
+        _weightComponent = GetComponent<EntityWeight>();
     }
 
     public void Apply(Transform attackerTransform)
@@ -25,9 +27,11 @@ public class EntityKnockback : MonoBehaviour
         knockbackDirection.y = _knockbackVelocityY; 
         knockbackDirection = knockbackDirection.normalized;
 
+        float resistance = _weightComponent != null ? _weightComponent.KnockbackResistance : 0f;
+        float finalKnockbackForce = _knockbackForce * (1f - resistance);
 
         _rigidbody.linearVelocity = Vector2.zero;
-        _rigidbody.AddForce(knockbackDirection * _knockbackForce, ForceMode2D.Impulse);
+        _rigidbody.AddForce(knockbackDirection * finalKnockbackForce, ForceMode2D.Impulse);
 
         if (_stunComponent != null)
         {

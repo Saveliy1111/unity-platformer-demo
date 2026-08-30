@@ -46,4 +46,13 @@ public class PlayerVisuals : MonoBehaviour
         bool isFalling = !_groundDetector.isGrounded && _rigidbody.linearVelocity.y < 0f;
         _animator.SetBool("isFalling", isFalling);
     }
+
+    public void TriggerDeathVisuals()
+    {
+        _animator.SetBool("isDead", true);
+        
+        _animator.SetTrigger("die");
+
+        this.enabled = false; 
+    }
 }

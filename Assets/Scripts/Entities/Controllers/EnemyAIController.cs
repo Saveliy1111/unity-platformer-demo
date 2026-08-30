@@ -27,6 +27,7 @@ public class EnemyAIController : MonoBehaviour
         if (_health != null)
         {
             _health.OnDeath += HandleDeath;
+            _health.OnTakeDamage += HandleTakeDamage;
         }
     }
 
@@ -37,6 +38,14 @@ public class EnemyAIController : MonoBehaviour
         if (_orientationComponent != null)
         {
             _orientationComponent.SetFacingDirection(directionX);
+        }
+    }
+
+    private void HandleTakeDamage(Transform attacker)
+    {
+        if (PlayerDetector != null && attacker != null)
+        {
+            PlayerDetector.ForceAggro(attacker);
         }
     }
 
@@ -66,7 +75,7 @@ public class EnemyAIController : MonoBehaviour
 
     private void SwitchToDeadLayer()
     {
-        int deadLayer = LayerMask.NameToLayer("DeadEnemy");
+        int deadLayer = LayerMask.NameToLayer("DeadEnemies");
         if (deadLayer != -1)
         {
             gameObject.layer = deadLayer;
@@ -78,6 +87,7 @@ public class EnemyAIController : MonoBehaviour
         if (_health != null)
         {
             _health.OnDeath -= HandleDeath;
+            _health.OnTakeDamage -= HandleTakeDamage;
         }
     }
 }

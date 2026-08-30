@@ -6,7 +6,7 @@ public class EnemyPatrolState : StateMachineBehaviour
     [Header("Patrol Settings")]
     [SerializeField] private float _patrolSpeed = 2f;
     [SerializeField] private RandomTimer _patrolTimer;
-    [SerializeField] private CooldownTimer _turnCooldownTimer = new CooldownTimer();
+    [SerializeField] private CountdownTimer _turnCooldownTimer = new CountdownTimer();
     [SerializeField] private float _turnCooldown = 0.3f;
 
     private EnemyAIController _aiController;
@@ -23,15 +23,16 @@ public class EnemyPatrolState : StateMachineBehaviour
        }
 
        _patrolTimer.Start();
-       _turnCooldownTimer.StartCooldown(0f);
+       _turnCooldownTimer.StartCountdown(0f);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        if (_aiController == null) return;
-
         if (CheckForAggro(animator)) return;
 
+        _turnCooldownTimer.Tick();
+        
         CheckForObstacles();
         _aiController.SetMovementDirection(_currentDirection);
 
@@ -48,12 +49,14 @@ public class EnemyPatrolState : StateMachineBehaviour
 
     private void CheckForObstacles()
     {
+        if (!_turnCooldownTimer.IsFinished) return;
+        
         if (_aiController.ObstaclesDetector != null)
             {
                 if (_aiController.ObstaclesDetector.IsHittingWall || _aiController.ObstaclesDetector.IsLedge)
                 {
                     _currentDirection *= -1;
-                    _turnCooldownTimer.StartCooldown(_turnCooldown);
+                    _turnCooldownTimer.StartCountdown(_turnCooldown);
                 }
             }
     }
