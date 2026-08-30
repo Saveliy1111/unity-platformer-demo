@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5154340043297345527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7720611742082828149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Enemy
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7677300941557767721}
   - component: {fileID: 4832527136538237671}
   - component: {fileID: 2050255491404898032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,8 +143,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1497841107
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3873087697204469031, guid: 588bc6148ae31c240a542b1a9506df33, type: 3}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6286637037044664946}
   - component: {fileID: 967672332638223718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CastPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -257,7 +257,9 @@ GameObject:
   - component: {fileID: 7977781607172016876}
   - component: {fileID: 4234298966043183118}
   - component: {fileID: 4232963903428667471}
-  m_Layer: 0
+  - component: {fileID: 1740322470447740676}
+  - component: {fileID: 6142108354516624489}
+  m_Layer: 10
   m_Name: Spider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -272,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9138448142396076429}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 96.56, y: -3.78, z: 0}
   m_LocalScale: {x: 1.0071, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -291,7 +293,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e9e9a8bb157ddf743b610c1ad4e6f1fd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -366,7 +368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed829d942e5099943bc40bc80283e8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMovement
-  _speed: 1
+  _maxSpeed: 5
+  _acceleration: 20
+  _deceleration: 60
 --- !u!114 &716061010146454194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +401,7 @@ MonoBehaviour:
   _safeDropDepth: 5
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   _raySpacing: 0.3
 --- !u!114 &4835501378755667379
 MonoBehaviour:
@@ -414,9 +418,13 @@ MonoBehaviour:
   _castPoint: {fileID: 6286637037044664946}
   _playerLayer:
     serializedVersion: 2
+    m_Bits: 512
+  _environmentLayer:
+    serializedVersion: 2
     m_Bits: 256
   _detectionRange: 4
   _aggroRadius: 8
+  _viewAngle: 90
 --- !u!114 &1464481212856730970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,10 +513,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundDetector
   _groundCheck: {fileID: 7720611742082828149}
-  _groundCheckRadius: 0.4
-  _groundLayer:
+  _groundCheckRadius: 0.135
+  _environmentLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   OnLandVisuals:
     m_PersistentCalls:
       m_Calls: []
@@ -525,6 +533,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityJump
   _jumpForce: 6.7
+  _coyoteTimeDuration: 0.15
+  _jumpBufferDuration: 0.1
+  _jumpCooldownDuration: 0.1
+  _jumpCutMultiplier: 0.5
   OnJumpVisuals:
     m_PersistentCalls:
       m_Calls: []
@@ -553,3 +565,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2a94e963c9ce642b8af91f15674525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStun
+--- !u!114 &1740322470447740676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138448142396076429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2a94e963c9ce642b8af91f15674525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityStun
+--- !u!114 &6142108354516624489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138448142396076429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289301a849a364f498b74a4606a7c0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::EntityWeight
+  _weightLevel: 1
+  _knockbackResistance: 0

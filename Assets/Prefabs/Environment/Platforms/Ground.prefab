@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8139495769171000024}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Point_3
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5622822426556149358}
   - component: {fileID: 4202320964286743911}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8151451671205826204}
   - component: {fileID: 2319518729677534676}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 888262272506378397}
   - component: {fileID: 3627205161986692478}
   - component: {fileID: 8222900386123493761}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ MonoBehaviour:
   - {fileID: 9199984049080639645, guid: f48d65009fc0efe4bafa8487ff85c341, type: 3}
   _enemies:
   - {fileID: 9138448142396076429, guid: 8d9948742aa6f67498257fba2c3dabd1, type: 3}
-  _enemySpawnChance: 0.2
+  _enemySpawnChance: 0.5
 --- !u!1 &4197591678357329392
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8182311726148718045}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Point_1
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -442,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5795877179654749594}
   - component: {fileID: 6774867102107869472}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1795222088486811513}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Point_2
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -563,7 +563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3978310504293248622}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3335831917723813411}
   - component: {fileID: 5086506420248829425}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2586886039984146435}
   - component: {fileID: 4718404449403027433}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
