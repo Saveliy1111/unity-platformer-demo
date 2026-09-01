@@ -14,16 +14,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Green'kor
+  - Pinkus
   - Environment
-  - Player
+  - Green'korHead
   - Enemies
   - PlayerProjectiles
   - EnemyProjectiles
   - Interactables
   - DeadEnemies
-  - 
+  - PushableObjects
   - 
   - 
   - 
@@ -50,11 +50,20 @@ TagManager:
   - name: BackgDeocrations
     uniqueID: 1317281127
     locked: 0
-  - name: Entities
+  - name: Enemies
     uniqueID: 2797126189
+    locked: 0
+  - name: Green'kor
+    uniqueID: 1576112619
+    locked: 0
+  - name: Pinkus
+    uniqueID: 3471160507
     locked: 0
   - name: Projectiles
     uniqueID: 1007621027
+    locked: 0
+  - name: Objects
+    uniqueID: 2661639687
     locked: 0
   m_RenderingLayers:
   - Default

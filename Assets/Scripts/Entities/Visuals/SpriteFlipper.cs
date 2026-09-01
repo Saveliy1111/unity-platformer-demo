@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class SpriteFlipper : MonoBehaviour
 {
-    private IEntityOrientation _orientation;
-    private EntityStun _stunController;
-    private EntityMovement _movementComponent;
+    private IOrientation _orientation;
+    private Stun _stunController;
+    private Movement _movementComponent;
 
     void Start()
     {
-        _orientation = GetComponentInParent<IEntityOrientation>();
-        _stunController = GetComponentInParent<EntityStun>();
-        _movementComponent = GetComponentInParent<EntityMovement>();
+        _orientation = GetComponentInParent<IOrientation>();
+        _stunController = GetComponentInParent<Stun>();
+        _movementComponent = GetComponentInParent<Movement>();
     }
 
     void Update()
@@ -30,7 +30,7 @@ public class SpriteFlipper : MonoBehaviour
     {
         bool facesLeft = false;
         
-        if (_orientation is EntityOrientation orientationComponent)
+        if (_orientation is Orientation orientationComponent)
         {
             facesLeft = orientationComponent.FacesLeftByDefault;
         }

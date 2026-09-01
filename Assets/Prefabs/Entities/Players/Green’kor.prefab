@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4749083410941838002}
   - component: {fileID: 3016678469153692159}
   - component: {fileID: 3134733050726792905}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: LandDustEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,6 +4894,104 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &487974595213210557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4919139371962012632}
+  - component: {fileID: 1806814264980755524}
+  - component: {fileID: 2428172769897852025}
+  m_Layer: 9
+  m_Name: HeadPlatform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4919139371962012632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487974595213210557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6340370305789612206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1806814264980755524
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487974595213210557}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0063878894, y: 0.58018434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.533617, y: 0.10025215}
+  m_EdgeRadius: 0
+--- !u!251 &2428172769897852025
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487974595213210557}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &953414009286260708
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,7 +5015,8 @@ GameObject:
   - component: {fileID: -1774027712227292068}
   - component: {fileID: 5323290721028321048}
   - component: {fileID: 4749872257256677710}
-  m_Layer: 9
+  - component: {fileID: 2942280338556173751}
+  m_Layer: 6
   m_Name: "Green\u2019kor"
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4932,13 +5031,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953414009286260708}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.367, y: -0.648, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 88.376, y: -0.624, z: 0}
   m_LocalScale: {x: 0.92991, y: 0.95745, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4699509044745504918}
   - {fileID: 764668417978335295}
+  - {fileID: 4919139371962012632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1823422592845513141
@@ -5027,10 +5127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundDetector
   _groundCheck: {fileID: 1702320537675202527}
-  _groundCheckRadius: 0.13
+  _boxSize: {x: 0.65, y: 0.05}
   _environmentLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   OnLandVisuals:
     m_PersistentCalls:
       m_Calls:
@@ -5358,6 +5458,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3213538168793652499}
+        m_TargetAssemblyTypeName: Unity.Cinemachine.CinemachineImpulseSource, Unity.Cinemachine
+        m_MethodName: GenerateImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7270738805673597511}
+        m_TargetAssemblyTypeName: HitStop, GameAssembly
+        m_MethodName: TriggerHitStop
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.05
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4749872257256677710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,6 +5494,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe191e63ae8c734298e59928751abed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::PlayerGroundStomper
+--- !u!114 &2942280338556173751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953414009286260708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d21d7826e4d8a74eb94a0ec7a343c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::EntityPush
+  _baseSpeed: 4
+  _pushSpeed: 2
+  _boxSize: {x: 0.5, y: 0.7}
+  _pushableLayer:
+    serializedVersion: 2
+    m_Bits: 32768
+  _castPoint: {fileID: 4025256076662553178}
 --- !u!1 &1767283282758569423
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,7 +5524,7 @@ GameObject:
   - component: {fileID: 2109795365983899048}
   - component: {fileID: 2819564261788015135}
   - component: {fileID: 4890535177415552779}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: JumpDustEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10264,6 +10407,50 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &2506468663484938651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4025256076662553178}
+  - component: {fileID: 6289251383476598173}
+  m_Layer: 6
+  m_Name: PushCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4025256076662553178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506468663484938651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.383, y: -0.251, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4699509044745504918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6289251383476598173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506468663484938651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7ee1a3b3d72944cbaf1a151f99efa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::CastPointFlipper
 --- !u!1 &4095435588228175680
 GameObject:
   m_ObjectHideFlags: 0
@@ -10273,7 +10460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7392859367856610792}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Particle Systems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10307,7 +10494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1702320537675202527}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10340,8 +10527,8 @@ GameObject:
   - component: {fileID: 4546498704619796343}
   - component: {fileID: 8991285474279121106}
   - component: {fileID: 4336547563464606389}
-  m_Layer: 9
-  m_Name: StompLandDustEffect (1)
+  m_Layer: 6
+  m_Name: StompLandDustEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15238,7 +15425,8 @@ GameObject:
   - component: {fileID: 8980013772229180462}
   - component: {fileID: 3213538168793652499}
   - component: {fileID: 1058016315434363190}
-  m_Layer: 9
+  - component: {fileID: 7270738805673597511}
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15306,8 +15494,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1497841107
-  m_SortingLayer: 2
+  m_SortingLayerID: 1576112619
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2030909181917936238, guid: db0913051eece5d45b392b27a42ddca2, type: 3}
@@ -15431,6 +15619,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fb94164bc1d824f885314bffb80344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::StompVisuals
+--- !u!114 &7270738805673597511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865359540905294663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690c1d40ae618f04ca6b79ea59981066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::HitStop
 --- !u!1 &9156333468660772253
 GameObject:
   m_ObjectHideFlags: 0
@@ -15440,7 +15640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4699509044745504918}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15461,5 +15661,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1702320537675202527}
+  - {fileID: 4025256076662553178}
   m_Father: {fileID: 6340370305789612206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
