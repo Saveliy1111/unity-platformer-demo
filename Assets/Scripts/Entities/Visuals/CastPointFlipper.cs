@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class CastPointFlipper : MonoBehaviour
 {
-    private IEntityOrientation _orientation;
+    private IOrientation _orientation;
     private float _initialOffsetX;
 
     void Start()
     {
-        _orientation = GetComponentInParent<IEntityOrientation>();
+        _orientation = GetComponentInParent<IOrientation>();
         _initialOffsetX = Mathf.Abs(transform.localPosition.x);
     }
 

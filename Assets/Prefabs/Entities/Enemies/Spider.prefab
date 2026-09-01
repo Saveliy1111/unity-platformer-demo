@@ -45,7 +45,7 @@ GameObject:
   m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Enemy
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 5141104147621267301}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18900013, z: 0}
+  m_LocalPosition: {x: 0, y: -0.238, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -401,7 +401,7 @@ MonoBehaviour:
   _safeDropDepth: 5
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   _raySpacing: 0.3
 --- !u!114 &4835501378755667379
 MonoBehaviour:
@@ -418,10 +418,10 @@ MonoBehaviour:
   _castPoint: {fileID: 6286637037044664946}
   _playerLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 192
   _environmentLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   _detectionRange: 4
   _aggroRadius: 8
   _viewAngle: 90
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundDetector
   _groundCheck: {fileID: 7720611742082828149}
-  _groundCheckRadius: 0.135
+  _boxSize: {x: 0.65, y: 0.05}
   _environmentLayer:
     serializedVersion: 2
     m_Bits: 256
