@@ -34,6 +34,15 @@ public class LaserProjectile : Projectile
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        int colLayer = collider.gameObject.layer;
+        if (collider.gameObject.CompareTag(Constants.PLAYER_TAG) 
+        || colLayer == LayerMask.NameToLayer("Pinkus") 
+        || colLayer == LayerMask.NameToLayer("Green'kor")
+        || colLayer == LayerMask.NameToLayer("Green'korHead"))
+        {
+            return;
+        }
+
         if (collider.gameObject.CompareTag(Constants.ENEMY_TAG) && collider.TryGetComponent(out Health health))
         {
             health.TakeDamage(_damage, _shooterTransform);

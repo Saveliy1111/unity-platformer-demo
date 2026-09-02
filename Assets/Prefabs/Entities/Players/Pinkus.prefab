@@ -9978,6 +9978,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8336277018516898392}
+  - {fileID: 420559760509470795}
   m_Father: {fileID: 1289421565762139745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5400780630481340483
@@ -10068,6 +10069,7 @@ GameObject:
   - component: {fileID: 2247751616281943494}
   - component: {fileID: 170625446404167076}
   - component: {fileID: 8094832479894474404}
+  - component: {fileID: 1621329263506236786}
   m_Layer: 7
   m_Name: Pinkus
   m_TagString: Player
@@ -10083,7 +10085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677579827508845762}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 78.59, y: -0.76, z: 0}
   m_LocalScale: {x: 0.92991, y: 0.95745, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10261,8 +10263,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerHUD, GameAssembly
-        m_MethodName: UpdateHearts
+        m_TargetAssemblyTypeName: HealthBarUI, GameAssembly
+        m_MethodName: UpdateHealth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10302,6 +10304,18 @@ MonoBehaviour:
       - m_Target: {fileID: 137442017894079123}
         m_TargetAssemblyTypeName: Unity.Cinemachine.CinemachineImpulseSource, Unity.Cinemachine
         m_MethodName: GenerateImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: hurt
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6398485290628126783}
+        m_TargetAssemblyTypeName: RiderVisuals, GameAssembly
+        m_MethodName: TriggerMountedHurt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10513,6 +10527,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9213cb6d643154b4c82996781d77364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::PlayerController
+--- !u!114 &1621329263506236786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677579827508845762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194b1cad5cd35514c8ffb6e1a4345222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::MountController
+  ScanPoint: {fileID: 420559760509470795}
+  ScanBoxSize: {x: 0.85, y: 0.85}
+  MountableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  OnMountVisuals:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6398485290628126783}
+        m_TargetAssemblyTypeName: RiderVisuals, GameAssembly
+        m_MethodName: SetMountStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDismountVisuals:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6398485290628126783}
+        m_TargetAssemblyTypeName: RiderVisuals, GameAssembly
+        m_MethodName: SetMountStop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &8134177101541255025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 420559760509470795}
+  m_Layer: 7
+  m_Name: MountScanPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &420559760509470795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134177101541255025}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: -0.412, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1102853832156759703}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8197372363715461917
 GameObject:
   m_ObjectHideFlags: 0
@@ -15421,6 +15513,7 @@ GameObject:
   - component: {fileID: 1928716206188615417}
   - component: {fileID: 6912668360446477784}
   - component: {fileID: 137442017894079123}
+  - component: {fileID: 6398485290628126783}
   m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
@@ -15603,3 +15696,15 @@ MonoBehaviour:
     DissipationDistance: 100
     PropagationSpeed: 343
   DefaultVelocity: {x: 0.75, y: 0.75, z: 0}
+--- !u!114 &6398485290628126783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9111412660546350415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbddee3282d60944a6af7aca6cc88f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::RiderVisuals
