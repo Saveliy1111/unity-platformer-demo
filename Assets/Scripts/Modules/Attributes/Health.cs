@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     
     public bool IsDead { get; private set; }
 
-    public event Action<Transform> OnTakeDamage;
+    public event Action<int, Transform> OnTakeDamage;
     public event Action OnDeath;
 
     [Header ("Events (For UI & Visuals)")]
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
             _currentHealth -= damage;
             OnHealthChangedVisuals?.Invoke(_currentHealth);
 
-            OnTakeDamage?.Invoke(attackerTransform);
+            OnTakeDamage?.Invoke(damage, attackerTransform);
             OnTakeDamageVisuals?.Invoke();
 
             if (attackerTransform != null && _knockbackComponent != null)

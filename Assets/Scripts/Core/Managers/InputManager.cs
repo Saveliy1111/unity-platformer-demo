@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     public event Action OnSwitchCharacter;
     public event Action OnShoot;
     public event Action OnStomp;
+    public event Action OnInteract;
+    public event Action<GameObject> OnForceSwitchCharacter;
 
     void Awake()
     {
@@ -33,6 +35,8 @@ public class InputManager : MonoBehaviour
 
             _inputActions.Player.LaserShoot.started += ctx => OnShoot?.Invoke();
             _inputActions.Player.Stomp.started += ctx => OnStomp?.Invoke();
+
+            _inputActions.Player.Interact.started += ctx => OnInteract?.Invoke();
         }
         else
         {
@@ -48,5 +52,10 @@ public class InputManager : MonoBehaviour
     void OnDisable()
     {
         _inputActions?.Disable();
+    }
+
+    public void TriggerForceSwitch(GameObject targetPlayer)
+    {
+        OnForceSwitchCharacter?.Invoke(targetPlayer);
     }
 }

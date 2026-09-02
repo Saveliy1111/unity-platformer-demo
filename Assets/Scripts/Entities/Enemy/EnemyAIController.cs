@@ -41,9 +41,9 @@ public class EnemyAIController : MonoBehaviour
         }
     }
 
-    private void HandleTakeDamage(Transform attacker)
+    private void HandleTakeDamage(int damage, Transform attacker)
     {
-        if (PlayerDetector != null && attacker != null)
+        if (PlayerDetector != null && attacker != null && damage > 0)
         {
             PlayerDetector.ForceAggro(attacker);
         }

@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.OnSwitchCharacter += HandleSwitchCharacter;
+            InputManager.Instance.OnForceSwitchCharacter += ForceSwitchToPlayer;
         }
     }
 
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.OnSwitchCharacter -= HandleSwitchCharacter;
+            InputManager.Instance.OnForceSwitchCharacter -= ForceSwitchToPlayer;
         }
     }
 
@@ -42,6 +44,17 @@ public class PlayerManager : MonoBehaviour
         _activePlayer = (_activePlayer == _player1) ? _player2 : _player1;
         
         NotifyActiveState(_activePlayer, true);
+        UpdateCameraTarget();
+    }
+
+    private void ForceSwitchToPlayer(GameObject targetPlayer)
+    {
+        if (_activePlayer == targetPlayer) return;
+
+        NotifyActiveState(_activePlayer, false);
+        _activePlayer = targetPlayer;
+        NotifyActiveState(_activePlayer, true);
+
         UpdateCameraTarget();
     }
 
