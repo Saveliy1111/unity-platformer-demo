@@ -10183,7 +10183,7 @@ MonoBehaviour:
   _boxSize: {x: 0.35, y: 0.05}
   _environmentLayer:
     serializedVersion: 2
-    m_Bits: 33536
+    m_Bits: 99072
   OnLandVisuals:
     m_PersistentCalls:
       m_Calls:
@@ -10259,6 +10259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _maxHealth: 3
+  _iFrameDuration: 0.2
   OnHealthChangedVisuals:
     m_PersistentCalls:
       m_Calls:
@@ -10459,7 +10460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameAssembly::EntityShoot
   _projectilePrefab: {fileID: 6395458298696881740, guid: a97f6215ac7e83046beafeaaec99f01c, type: 3}
   _firePoint: {fileID: 920906164485742481}
-  _chargeTime: 0.5
+  _chargeTime: 0.15
   _shootCooldown: 0.83
   OnChargeVisuals:
     m_PersistentCalls:

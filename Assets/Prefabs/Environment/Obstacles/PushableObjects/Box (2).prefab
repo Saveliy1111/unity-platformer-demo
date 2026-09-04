@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5351113462398876587}
   - component: {fileID: 6920015702539013877}
   - component: {fileID: 3010913542920560764}
+  - component: {fileID: 4029487173465181311}
+  - component: {fileID: 2526615743187425630}
   m_Layer: 15
   m_Name: Box (2)
   m_TagString: Untagged
@@ -194,3 +196,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44da725738cc914da50a65dca66d67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::PushableObject
+--- !u!114 &4029487173465181311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225878686571238690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eec236ee4174364a93f241d99902365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::Health
+  _maxHealth: 4
+  OnHealthChangedVisuals:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamageVisuals:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathVisuals:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2526615743187425630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225878686571238690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7efd81dfb10b443abf2a5739b9c61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::DestroyableObject
+  _destructionParticles: {fileID: 0}

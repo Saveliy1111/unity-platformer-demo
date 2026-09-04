@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Stun : MonoBehaviour
@@ -6,10 +7,16 @@ public class Stun : MonoBehaviour
     
     public bool IsStunned { get; private set; }
 
+    public event Action<bool> OnStunStateChanged;
+
     public void ApplyStun(float duration)
     {
         _stunTimer.StartCountdown(duration);
-        IsStunned = true;
+        if (!IsStunned)
+        {
+            IsStunned = true;
+            OnStunStateChanged?.Invoke(true);
+        }
     }
 
     private void Update()
@@ -20,6 +27,7 @@ public class Stun : MonoBehaviour
             if (_stunTimer.IsFinished)
             {
                 IsStunned = false;
+                OnStunStateChanged?.Invoke(false);
             }
         }
     }
