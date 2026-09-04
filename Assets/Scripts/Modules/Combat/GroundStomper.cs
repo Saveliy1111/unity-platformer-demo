@@ -12,6 +12,7 @@ public class GroundStomper : MonoBehaviour
     [SerializeField] private Vector2 _hitBoxSize = new Vector2(3f, 1f);
     [SerializeField] private Vector2 _hitBoxOffset = new Vector2(0f, -0.5f);
     [SerializeField] private LayerMask _targetLayer;
+    [SerializeField] private string _stompLayerName = "PlayerStomp";
 
     [Header("Cooldown")]
     [SerializeField] private float _cooldownDuration = 1f;
@@ -26,12 +27,16 @@ public class GroundStomper : MonoBehaviour
     private GroundDetector _groundDetector;
     private Movement _movement;
     private CountdownTimer _cooldownTimer = new CountdownTimer();
+    private Health _health;
+private int _originalLayer;
 
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _groundDetector = GetComponent<GroundDetector>();
         _movement = GetComponent<Movement>();
+        _originalLayer = gameObject.layer;
+        _cooldownTimer.StartCountdown(0f);
         
         _cooldownTimer.StartCountdown(0f);
     }
@@ -43,7 +48,7 @@ public class GroundStomper : MonoBehaviour
         
         if (IsStomping)
         {
-            DamageEnemiesInPath();
+            DealDamageInPath();
 
             if (_groundDetector.isGrounded)
             {
@@ -68,30 +73,43 @@ public class GroundStomper : MonoBehaviour
     private void StartStompFalling()
     {
         IsStomping = true;
-        _movement.LockMovement();
+        if (_health != null) _health.IsInvincible = true;
 
+        gameObject.layer = LayerMask.NameToLayer(_stompLayerName);
+
+        _movement.LockMovement();
         _rigidbody.linearVelocity = new Vector2(0f, _downwardVelocity);
+
         OnStompStartVisuals?.Invoke();
     }
 
     private void ExecuteImpact()
     {
         IsStomping = false;
+        if (_health != null) _health.IsInvincible = false;
+
         _movement.UnlockMovement();
 
-        DamageEnemiesInPath();
+        DealDamageInPath();
+        
+        gameObject.layer = _originalLayer;
         _cooldownTimer.StartCountdown(_cooldownDuration);
         OnStompImpactVisuals?.Invoke();
     }
 
-     private void DamageEnemiesInPath()
+     private void DealDamageInPath()
     {
         Vector2 boxCenter = (Vector2)transform.position + _hitBoxOffset;
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(boxCenter, _hitBoxSize, 0f, _targetLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(boxCenter, _hitBoxSize, 0f, _targetLayer);
 
-        foreach (Collider2D enemy in hitEnemies)
+        foreach (Collider2D collider in hitColliders)
         {
-            if (enemy.TryGetComponent(out Health health))
+            if (collider.TryGetComponent(out IHitResponder hitResponder))
+            {
+                hitResponder.OnHit(transform);
+            }
+            
+            if (collider.TryGetComponent(out Health health))
             {
                 health.TakeDamage(_damage, transform);
             }

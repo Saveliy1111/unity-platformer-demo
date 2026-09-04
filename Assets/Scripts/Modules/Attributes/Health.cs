@@ -6,13 +6,16 @@ public class Health : MonoBehaviour
 {
     [Header ("Health Settings")]
     [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private float _iFrameDuration = 0.2f;
 
     private int _currentHealth;
     public int CurrentHealth => _currentHealth;
-
-    private Knockback _knockbackComponent;
     
     public bool IsDead { get; private set; }
+    public bool IsInvincible { get; set; }
+
+    private Knockback _knockbackComponent;
+    private float _lastDamageTime = -Mathf.Infinity;
 
     public event Action<int, Transform> OnTakeDamage;
     public event Action OnDeath;
@@ -43,23 +46,27 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage, Transform attackerTransform)
     {
-        if (!IsDead)
+        if (IsDead || IsInvincible || Time.time - _lastDamageTime < _iFrameDuration)
         {
-            _currentHealth -= damage;
-            OnHealthChangedVisuals?.Invoke(_currentHealth);
+            return;
+        }
 
-            OnTakeDamage?.Invoke(damage, attackerTransform);
-            OnTakeDamageVisuals?.Invoke();
+        _lastDamageTime = Time.time;
 
-            if (attackerTransform != null && _knockbackComponent != null)
-            {
-                _knockbackComponent.Apply(attackerTransform);
-            }
+        _currentHealth -= damage;
+        OnHealthChangedVisuals?.Invoke(_currentHealth);
 
-            if (_currentHealth <= 0)
-            {
-                Die();
-            }
+        OnTakeDamage?.Invoke(damage, attackerTransform);
+        OnTakeDamageVisuals?.Invoke();
+
+        if (attackerTransform != null && _knockbackComponent != null)
+        {
+            _knockbackComponent.Apply(attackerTransform);
+        }
+
+        if (_currentHealth <= 0)
+        {
+            Die();
         }
     }
 

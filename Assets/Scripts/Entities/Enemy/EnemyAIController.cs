@@ -5,14 +5,15 @@ using UnityEngine.Assertions.Must;
 [RequireComponent(typeof(Movement))]
 public class EnemyAIController : MonoBehaviour
 {
-    private Orientation _orientationComponent;
-    private Health _health;
-
     public Movement MovementComponent { get; private set; }
     public Animator Animator { get; private set;}
     public ObstacleDetector ObstaclesDetector { get; private set; }
     public PlayerDetector PlayerDetector { get; private set; }
     public IOrientation Orientation { get; private set; }
+
+    private Orientation _orientationComponent;
+    private Health _health;
+
 
     void Start()
     {
@@ -81,6 +82,7 @@ public class EnemyAIController : MonoBehaviour
             gameObject.layer = deadLayer;
         }
     }
+
 
     private void OnDestroy()
     {

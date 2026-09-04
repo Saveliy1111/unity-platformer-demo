@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1007621027
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9102010117072156758, guid: 2831284cfbd75e745a78e60b65322ff6, type: 3}
@@ -183,6 +183,9 @@ MonoBehaviour:
   _speed: 30
   _lifetime: 2
   _damage: 1
+  _damageableLayers:
+    serializedVersion: 2
+    m_Bits: 75008
 --- !u!96 &3864706205674071125
 TrailRenderer:
   serializedVersion: 4
@@ -229,7 +232,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1007621027
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Time: 0.05
