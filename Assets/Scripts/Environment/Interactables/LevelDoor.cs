@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,22 +8,21 @@ public class LevelDoor : MonoBehaviour
     private bool _isPlayerNear = false;
     private bool _isUnlocked = false;
 
-    [Header("Interaction Events")]
-    public UnityEvent OnUnlockAttempt;
-    public UnityEvent OnEnterAttempt;
+    public event Action OnUnlockAttempt;
+    public event Action OnEnterAttempt;
 
     [Header("Visual/Audio Events")]
     public UnityEvent OnDoorUnlocked;
 
     void Update()
     {
-        if (_isPlayerNear && Input.GetKey(KeyCode.E))
+        if (_isPlayerNear && Input.GetKeyDown(KeyCode.E))
         {
             if (!_isUnlocked)
             {
                 OnUnlockAttempt?.Invoke();
             }
-            if (_isUnlocked)
+            else
             {
                 OnEnterAttempt?.Invoke();
             }
@@ -54,4 +54,3 @@ public class LevelDoor : MonoBehaviour
       }
     }
 }
-

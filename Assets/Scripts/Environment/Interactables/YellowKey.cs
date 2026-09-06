@@ -1,18 +1,27 @@
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider2D))]
 public class YellowKey : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.CompareTag(Constants.PLAYER_TAG))
-        {
-            PlayerInventory playerInventory = collider.gameObject.GetComponent<PlayerInventory>();
+    [Header("Visual/Audio Events")]
+    public UnityEvent OnCollectedVisuals;
 
-            if(playerInventory != null)
-            {
-                playerInventory.AddKey();
-                Destroy(gameObject);
-            }
+    private bool _isCollected = false;
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_isCollected) return;
+        if (!collision.gameObject.CompareTag(Constants.PLAYER_TAG)) return;
+
+        _isCollected = true;
+
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.CollectKey();
         }
+
+        OnCollectedVisuals?.Invoke();
+        Destroy(gameObject);
     }
 }

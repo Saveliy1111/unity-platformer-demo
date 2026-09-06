@@ -26,8 +26,8 @@ TagManager:
   - PushableObjects
   - Hazards
   - PlayerStomp
-  - 
-  - 
+  - Pickups
+  - Background
   - 
   - 
   - 

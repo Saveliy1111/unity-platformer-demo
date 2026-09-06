@@ -8,9 +8,9 @@ public class EnemyHurtState : StateMachineBehaviour
     {
         _aiController = animator.gameObject.GetComponentInParent<EnemyAIController>();
 
-        if (_aiController != null)
+        if (_aiController != null && _aiController.NavigationStrategy != null)
         {
-            _aiController.MovementComponent.SetDirection(0);
+            _aiController.NavigationStrategy.StopMovement();
         }
     }
 }

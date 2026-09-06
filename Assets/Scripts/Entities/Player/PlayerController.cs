@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(Jump))]
+[RequireComponent(typeof(IMovement))]
 public class PlayerController : MonoBehaviour, IPlayerActiveListener
 {
-    private Movement _movement;
+    private IMovement _movement;
     private Jump _jump;
     private Health _health;
     private Orientation _orientation;
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, IPlayerActiveListener
 
     void Awake()
     {
-        _movement = GetComponent<Movement>();
+        _movement = GetComponent<IMovement>();
         _jump = GetComponent<Jump>();
         _health = GetComponent<Health>();
         _orientation = GetComponent<Orientation>();

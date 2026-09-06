@@ -1,7 +1,7 @@
 using AiEditorToolsSdk.Domain.Abstractions.Services;
 using UnityEngine;
 
-[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(IMovement))]
 [RequireComponent(typeof(Weight))]
 public class Pusher : MonoBehaviour
 {
@@ -12,14 +12,14 @@ public class Pusher : MonoBehaviour
     [SerializeField] private LayerMask _pushableLayer;
     [SerializeField] private Transform _castPoint;
 
-    private Movement _movement;
+    private IMovement _movement;
     private IOrientation _orientation;
     private Weight _myWeight;
     private bool _isPushing;
 
     void Start()
     {
-        _movement = GetComponent<Movement>();
+        _movement = GetComponent<IMovement>();
         _orientation = GetComponent<IOrientation>();
         _myWeight = GetComponent<Weight>();
     }

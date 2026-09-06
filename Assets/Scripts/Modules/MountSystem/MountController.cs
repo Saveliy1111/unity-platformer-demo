@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Movement))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(IMovement))]
 public class MountController : MonoBehaviour, IPlayerActiveListener
 {
     [Header("Scanning")]
@@ -15,7 +15,7 @@ public class MountController : MonoBehaviour, IPlayerActiveListener
 
     public Rigidbody2D Rigidbody { get; private set; }
     public Collider2D Collider { get; private set; }
-    public Movement Movement { get; private set; }
+    public IMovement Movement { get; private set; }
     public GameObject OwnerObject => gameObject;
     public Health PlayerHealth { get; private set; }
 
@@ -32,7 +32,7 @@ public class MountController : MonoBehaviour, IPlayerActiveListener
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         Collider = GetComponent<Collider2D>();
-        Movement = GetComponent<Movement>();
+        Movement = GetComponent<IMovement>();
         PlayerHealth = GetComponent<Health>();
 
         DismountedState = new DismountedState(this);

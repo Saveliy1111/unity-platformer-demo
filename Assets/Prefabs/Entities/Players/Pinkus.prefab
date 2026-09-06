@@ -10063,7 +10063,6 @@ GameObject:
   - component: {fileID: 9111684159683663824}
   - component: {fileID: 3475022988575424511}
   - component: {fileID: 4894822971731556661}
-  - component: {fileID: 7686289412014985362}
   - component: {fileID: 3963904336194287801}
   - component: {fileID: 4106264869439800648}
   - component: {fileID: 2247751616281943494}
@@ -10199,6 +10198,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundManager, GameAssembly
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3384d35499a942f4ea47853ae7289613, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4412886791233045900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10226,7 +10237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f199b23835b05b94aac63e37bac261f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityJump
-  _jumpForce: 6.7
+  _jumpForce: 7
   _coyoteTimeDuration: 0.2
   _jumpBufferDuration: 0.1
   _jumpCooldownDuration: 0.1
@@ -10241,6 +10252,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundManager, GameAssembly
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 094e543870ad1834bb00b1bedeeeab8d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10353,6 +10376,18 @@ MonoBehaviour:
           m_StringArgument: die
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundManager, GameAssembly
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0299b191fc01feb4499d97b04307e519, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: die
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3475022988575424511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10380,45 +10415,6 @@ MonoBehaviour:
   _knockbackForce: 9
   _knockbackVelocityY: 0.5
   _stunDuration: 0.5
---- !u!114 &7686289412014985362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677579827508845762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9c3d345740b7d4d80ae3eb3d90f19d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  OnKeysChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerHUD, Assembly-CSharp
-        m_MethodName: UpdateKeys
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: UpdateKeyCount
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3963904336194287801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10499,6 +10495,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: shoot
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundManager, GameAssembly
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b455747f47041c04a8d91a7a4d9c4669, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: shoot
@@ -15515,6 +15523,7 @@ GameObject:
   - component: {fileID: 6912668360446477784}
   - component: {fileID: 137442017894079123}
   - component: {fileID: 6398485290628126783}
+  - component: {fileID: 4786875134967951138}
   m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
@@ -15709,3 +15718,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbddee3282d60944a6af7aca6cc88f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::RiderVisuals
+--- !u!114 &4786875134967951138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9111412660546350415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b985510af7c5b5340b49ee6bd33ee7db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::FootstepSounds
+  _footstepSounds: []

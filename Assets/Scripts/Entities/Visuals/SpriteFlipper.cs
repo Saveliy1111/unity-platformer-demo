@@ -4,13 +4,13 @@ public class SpriteFlipper : MonoBehaviour
 {
     private IOrientation _orientation;
     private Stun _stunController;
-    private Movement _movementComponent;
+    private IMovement _movementComponent;
 
     void Start()
     {
         _orientation = GetComponentInParent<IOrientation>();
         _stunController = GetComponentInParent<Stun>();
-        _movementComponent = GetComponentInParent<Movement>();
+        _movementComponent = GetComponentInParent<IMovement>();
     }
 
     void Update()
