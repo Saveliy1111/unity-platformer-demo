@@ -13,6 +13,13 @@ public class PlayerManager : MonoBehaviour
 
     private GameObject _activePlayer;
 
+    public static PlayerManager Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         _activePlayer = _player1;
@@ -66,6 +73,14 @@ public class PlayerManager : MonoBehaviour
         foreach (var listener in listeners)
         {
             listener.OnActiveStateChanged(isActive);
+        }
+    }
+
+    public void HandlePlayerDeath(GameObject deadPlayer)
+    {
+        if (_activePlayer == deadPlayer && _virtualCamera != null)
+        {
+            _virtualCamera.Target.TrackingTarget = null;
         }
     }
 

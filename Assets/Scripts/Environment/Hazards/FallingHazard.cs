@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FallingHazard : MonoBehaviour
 {
     [Header("Hazard Settings")]
     [SerializeField] private int _damage = 5;
     [SerializeField] private float _minFallSpeed = 5f;
+
+    [Header("Visual/Audio Events")]
+    public UnityEvent OnLanded;
 
     private Rigidbody2D _rb;
     private float _lastFrameVelocityY;
@@ -32,5 +36,7 @@ public class FallingHazard : MonoBehaviour
                 health.TakeDamage(_damage, transform);
             }
         }
+
+        OnLanded?.Invoke();
     }
 }

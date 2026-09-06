@@ -65,7 +65,7 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.gameObject.transform.SetParent(transform);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) 
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Environment")) 
         {
             SwitchToNextWaypoint();
         }

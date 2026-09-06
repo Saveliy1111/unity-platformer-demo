@@ -10079,9 +10079,9 @@ GameObject:
   - component: {fileID: 7977781607172016876}
   - component: {fileID: 4234298966043183118}
   - component: {fileID: 4232963903428667471}
-  - component: {fileID: 1740322470447740676}
   - component: {fileID: 6142108354516624489}
   - component: {fileID: 3686354137300191011}
+  - component: {fileID: 1617231675831429530}
   m_Layer: 10
   m_Name: Spider
   m_TagString: Enemy
@@ -10224,7 +10224,7 @@ MonoBehaviour:
   _safeDropDepth: 5
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 33024
+    m_Bits: 98560
   _raySpacing: 0.3
 --- !u!114 &4835501378755667379
 MonoBehaviour:
@@ -10321,8 +10321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0bd2b94b0898642b5919832afe999b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityKnockback
-  _knockbackForce: 7
-  _knockbackVelocityY: 0
+  _knockbackForce: 4
+  _knockbackVelocityY: 0.5
   _stunDuration: 0.5
 --- !u!114 &1805555985412727909
 MonoBehaviour:
@@ -10413,18 +10413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2a94e963c9ce642b8af91f15674525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStun
---- !u!114 &1740322470447740676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138448142396076429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2a94e963c9ce642b8af91f15674525, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityStun
 --- !u!114 &6142108354516624489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10453,3 +10441,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameAssembly::DIsableOnStun
   _componentsToDisable:
   - {fileID: 8266659065937176646}
+--- !u!114 &1617231675831429530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138448142396076429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4023e3c74b29d4641bafb0e3253faa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameAssembly::GroundNavigationStrategy
+  _turnCooldown: 0.3
+  _jumpCooldownTimer:
+    _minTime: 1
+    _maxTime: 3

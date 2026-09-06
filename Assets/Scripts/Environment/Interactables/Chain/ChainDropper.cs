@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public class ChainDropper : MonoBehaviour
 {
     [SerializeField] private Health _weakLinkHealth;
     [SerializeField] private Rigidbody2D _targetRigidbody;
+
+     public event Action OnChainBreak;
 
     void OnEnable()
     {
@@ -28,5 +31,6 @@ public class ChainDropper : MonoBehaviour
             _targetRigidbody.transform.SetParent(null);
             _targetRigidbody.bodyType = RigidbodyType2D.Dynamic;
         }
+        OnChainBreak?.Invoke();
     }
 }

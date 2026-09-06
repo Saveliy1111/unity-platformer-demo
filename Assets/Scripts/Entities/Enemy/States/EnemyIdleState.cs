@@ -11,9 +11,9 @@ public class EnemyIdleState : StateMachineBehaviour
     {
         _aiController = animator.gameObject.GetComponentInParent<EnemyAIController>();
 
-        if (_aiController != null)
+        if (_aiController != null && _aiController.NavigationStrategy != null)
         {
-            _aiController.MovementComponent.SetDirection(0);
+            _aiController.NavigationStrategy.StopMovement();
         }
 
         _idleTimer.Start();
@@ -40,7 +40,8 @@ public class EnemyIdleState : StateMachineBehaviour
 
     private void CheckTimer(Animator animator)
     {
-        if (_idleTimer.Tick())
+        _idleTimer.Tick();
+        if (_idleTimer.IsFinished)
         {
             animator.SetBool("isPatrolling", true);
         }

@@ -46,7 +46,6 @@ public class PlayerDetector : MonoBehaviour
 
         Vector2 directionToPlayer = (hitPlayer.transform.position - _castPoint.position).normalized;
         float distanceToPlayer = Vector2.Distance(_castPoint.position, hitPlayer.transform.position);
-        Vector2 forwardDirection = _orientation.ForwardVector;
 
        if (IsTargetInViewAngle(directionToPlayer) && HasLineOfSightToTarget(directionToPlayer, distanceToPlayer))
         {

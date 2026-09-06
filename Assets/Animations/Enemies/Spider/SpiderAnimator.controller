@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jump
+  m_Name: Spider_Jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -218,7 +218,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -230,7 +230,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dead
+  m_Name: Spider_Dead
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -256,7 +256,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Patrol
+  m_Name: Spider_Patrol
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -523,7 +523,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hurt
+  m_Name: Spider_Hurt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -594,9 +594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseState
   _chaseSpeed: 4
-  _jumpCooldownTimer:
-    _minTime: 0.5
-    _maxTime: 1.5
   _chaseDirectionDeadzoneX: 0.2
 --- !u!114 &4022823067594499797
 MonoBehaviour:
@@ -614,7 +611,6 @@ MonoBehaviour:
   _patrolTimer:
     _minTime: 1
     _maxTime: 3
-  _turnCooldown: 0.3
 --- !u!1102 &4393916570858467052
 AnimatorState:
   serializedVersion: 6
@@ -622,7 +618,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chase Tree
+  m_Name: Spider_Chase_Tree
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -663,7 +659,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: Spider_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

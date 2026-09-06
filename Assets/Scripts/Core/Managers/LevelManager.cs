@@ -1,23 +1,52 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance { get; private set; }
     [Header("Level Settings")]
     [SerializeField] private int _keysRequiredToWin = 3;
 
     [Header("Scene Dependencies")]
     [SerializeField] private LevelDoor _levelDoor;
 
+    [Header("Events (For UI & Visuals)")]
+    public UnityEvent<int> OnKeyCountChangedVisuals;
+
     private int _currentKeys = 0;
     private bool _isGameOver = false;
 
-    public void UpdateKeyCount(int currentKeys)
+     void Awake()
     {
-        _currentKeys = currentKeys;
+        Instance = this;
     }
 
-    public void HandleDoorUnlockAttempt()
+    void OnEnable()
+    {
+        if (_levelDoor != null)
+        {
+            _levelDoor.OnUnlockAttempt += HandleDoorUnlockAttempt;
+            _levelDoor.OnEnterAttempt += HandleDoorEnterAttempt;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (_levelDoor != null)
+        {
+            _levelDoor.OnUnlockAttempt -= HandleDoorUnlockAttempt;
+            _levelDoor.OnEnterAttempt -= HandleDoorEnterAttempt;
+        }
+    }
+
+    public void CollectKey()
+    {
+        _currentKeys++;
+        OnKeyCountChangedVisuals?.Invoke(_currentKeys);
+    }
+
+    private  void HandleDoorUnlockAttempt()
     {
         if (_currentKeys >= _keysRequiredToWin)
         {
@@ -29,7 +58,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void HandleDoorEnterAttempt()
+    private  void HandleDoorEnterAttempt()
     {
         if (_isGameOver) return;
         
@@ -44,7 +73,6 @@ public class LevelManager : MonoBehaviour
         if (_isGameOver) return;
 
         _isGameOver = true;
-        Debug.Log("Player is dead!");
         Invoke(nameof(RestartLevel), 2f);
     }
 

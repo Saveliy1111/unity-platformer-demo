@@ -3,4 +3,5 @@ public interface IOrientation
 {
     float FacingDirection { get; }
     Vector2 ForwardVector { get; }
+    void SetFacingDirection(float directionX);
 }

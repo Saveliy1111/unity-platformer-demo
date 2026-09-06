@@ -1,44 +1,24 @@
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
-
-[RequireComponent(typeof(Movement))]
 public class EnemyAIController : MonoBehaviour
 {
-    public Movement MovementComponent { get; private set; }
-    public Animator Animator { get; private set;}
-    public ObstacleDetector ObstaclesDetector { get; private set; }
+    public Animator Animator { get; private set; }
     public PlayerDetector PlayerDetector { get; private set; }
-    public IOrientation Orientation { get; private set; }
+    public IEnemyNavigationStrategy NavigationStrategy { get; private set; }
 
-    private Orientation _orientationComponent;
     private Health _health;
 
-
-    void Start()
+    private void Start()
     {
-        MovementComponent = GetComponent<Movement>();
         Animator = GetComponentInChildren<Animator>();
-        ObstaclesDetector = GetComponent<ObstacleDetector>();
         PlayerDetector = GetComponent<PlayerDetector>();
-        _orientationComponent = GetComponent<Orientation>();
-        Orientation = _orientationComponent;
-        _health = GetComponent<Health>();
+        NavigationStrategy = GetComponent<IEnemyNavigationStrategy>();
         
+        _health = GetComponent<Health>();
         if (_health != null)
         {
             _health.OnDeath += HandleDeath;
             _health.OnTakeDamage += HandleTakeDamage;
-        }
-    }
-
-    public void SetMovementDirection(float directionX)
-    {
-        MovementComponent.SetDirection(directionX);
-        
-        if (_orientationComponent != null)
-        {
-            _orientationComponent.SetFacingDirection(directionX);
         }
     }
 
@@ -82,7 +62,6 @@ public class EnemyAIController : MonoBehaviour
             gameObject.layer = deadLayer;
         }
     }
-
 
     private void OnDestroy()
     {

@@ -7,25 +7,25 @@ public class AutoScrollLoop : MonoBehaviour
     private float _singleTileWidth;
     private Vector3 _startPosition;
 
-    private void Start()
+    void Start()
     {
-        _startPosition = transform.position;
+        _startPosition = transform.localPosition;
         _singleTileWidth = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
     }
 
-    private void Update()
+    void Update()
     {
-        transform.Translate(new Vector3(_scrollSpeed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(_scrollSpeed * Time.deltaTime, 0, 0), Space.Self);
 
-        if (transform.position.x < _startPosition.x - _singleTileWidth)
+        if (transform.localPosition.x < _startPosition.x - _singleTileWidth)
         {
-            transform.position 
-                = new Vector3(transform.position.x + _singleTileWidth, transform.position.y, transform.position.z);
+            transform.localPosition 
+                = new Vector3(transform.localPosition.x + _singleTileWidth, transform.localPosition.y, transform.localPosition.z);
         }
-        else if (transform.position.x > _startPosition.x + _singleTileWidth)
+        else if (transform.localPosition.x > _startPosition.x + _singleTileWidth)
         {
-            transform.position 
-                = new Vector3(transform.position.x - _singleTileWidth, transform.position.y, transform.position.z);
+            transform.localPosition 
+                = new Vector3(transform.localPosition.x - _singleTileWidth, transform.localPosition.y, transform.localPosition.z);
         }
     }
 }

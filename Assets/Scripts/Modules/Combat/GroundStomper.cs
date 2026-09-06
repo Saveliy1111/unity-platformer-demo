@@ -25,7 +25,7 @@ public class GroundStomper : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private GroundDetector _groundDetector;
-    private Movement _movement;
+    private IMovement _movement;
     private CountdownTimer _cooldownTimer = new CountdownTimer();
     private Health _health;
 private int _originalLayer;
@@ -34,7 +34,7 @@ private int _originalLayer;
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _groundDetector = GetComponent<GroundDetector>();
-        _movement = GetComponent<Movement>();
+        _movement = GetComponent<IMovement>();
         _originalLayer = gameObject.layer;
         _cooldownTimer.StartCountdown(0f);
         

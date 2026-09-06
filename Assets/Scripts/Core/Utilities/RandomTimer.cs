@@ -8,14 +8,15 @@ public class RandomTimer
     
     private float _currentTime;
 
+    public bool IsFinished => _currentTime <= 0f;
+
     public void Start()
     {
         _currentTime = Random.Range(_minTime, _maxTime);
     }
     
-    public bool Tick()
+    public void Tick()
     {
         _currentTime -= Time.deltaTime;
-        return _currentTime <= 0f;
     }
 }

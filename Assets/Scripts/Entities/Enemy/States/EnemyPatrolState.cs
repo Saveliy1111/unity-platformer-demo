@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPatrolState : StateMachineBehaviour
@@ -6,59 +5,45 @@ public class EnemyPatrolState : StateMachineBehaviour
     [Header("Patrol Settings")]
     [SerializeField] private float _patrolSpeed = 2f;
     [SerializeField] private RandomTimer _patrolTimer;
-    [SerializeField] private CountdownTimer _turnCooldownTimer = new CountdownTimer();
-    [SerializeField] private float _turnCooldown = 0.3f;
 
     private EnemyAIController _aiController;
-    private float _currentDirection;
+    private float _currentDirection; 
 
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        _aiController = animator.gameObject.GetComponentInParent<EnemyAIController>();
 
-       if (_aiController != null)
+       if (_aiController != null && _aiController.NavigationStrategy != null)
        {
-           _aiController.MovementComponent.SetSpeed(_patrolSpeed);
-           _currentDirection = _aiController.Orientation.ForwardVector.x;
+           _currentDirection = _aiController.NavigationStrategy.CurrentDirection;
        }
 
        _patrolTimer.Start();
-       _turnCooldownTimer.StartCountdown(0f);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       if (_aiController == null) return;
+        if (_aiController == null) return;
         if (CheckForAggro(animator)) return;
 
-        _turnCooldownTimer.Tick();
-        
-        CheckForObstacles();
-        _aiController.SetMovementDirection(_currentDirection);
+        if (_aiController.NavigationStrategy != null)
+        {
+            _currentDirection = _aiController.NavigationStrategy.ExecutePatrol(_currentDirection, _patrolSpeed);
+        }
 
-        CheckTimer(animator);
+        _patrolTimer.Tick();
+        if (_patrolTimer.IsFinished)
+        {
+            animator.SetBool("isPatrolling", false);
+        }
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_aiController != null)
+        if (_aiController != null && _aiController.NavigationStrategy != null)
         {
-            _aiController.SetMovementDirection(0);
+            _aiController.NavigationStrategy.StopMovement();
         }
-    }
-
-    private void CheckForObstacles()
-    {
-        if (!_turnCooldownTimer.IsFinished) return;
-        
-        if (_aiController.ObstaclesDetector != null)
-            {
-                if (_aiController.ObstaclesDetector.IsHittingWall || _aiController.ObstaclesDetector.IsLedge)
-                {
-                    _currentDirection *= -1;
-                    _turnCooldownTimer.StartCountdown(_turnCooldown);
-                }
-            }
     }
 
     private bool CheckForAggro(Animator animator)
@@ -68,15 +53,6 @@ public class EnemyPatrolState : StateMachineBehaviour
             animator.SetBool("isChasing", true);
             return true;
         }
-
         return false;
-    }
-
-    private void CheckTimer(Animator animator)
-    {
-        if (_patrolTimer.Tick())
-        {
-            animator.SetBool("isPatrolling", false);
-        }
     }
 }
