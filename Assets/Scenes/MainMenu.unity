@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!1 &1514790589
+--- !u!1 &1453913624
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1528,10 +1528,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1514790593}
-  - component: {fileID: 1514790592}
-  - component: {fileID: 1514790591}
-  - component: {fileID: 1514790590}
+  - component: {fileID: 1453913628}
+  - component: {fileID: 1453913627}
+  - component: {fileID: 1453913626}
+  - component: {fileID: 1453913625}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -1539,52 +1539,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1514790590
+--- !u!114 &1453913625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514790589}
+  m_GameObject: {fileID: 1453913624}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b2bdf2a89bf4144eaf3a0717276e77f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::SceneMusicStarter
   _musicClip: {fileID: 8300000, guid: 1bb3d8127ed5ec042b1d338fa6ea85db, type: 3}
---- !u!114 &1514790591
+--- !u!114 &1453913626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514790589}
+  m_GameObject: {fileID: 1453913624}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04fc9a72ecee33246bb7e6e913da6a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameAssembly::MusicManager
-  _musicSource: {fileID: 1514790592}
---- !u!82 &1514790592
+  _musicSource: {fileID: 1453913627}
+--- !u!82 &1453913627
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514790589}
+  m_GameObject: {fileID: 1453913624}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.104
+  m_PlayOnAwake: 1
+  m_Volume: 0.048
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 164
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1662,16 +1662,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1514790593
+--- !u!4 &1453913628
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514790589}
+  m_GameObject: {fileID: 1453913624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.82933, y: 3.781, z: 0}
+  m_LocalPosition: {x: 2.88261, y: -2.00094, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1821,4 +1821,4 @@ SceneRoots:
   - {fileID: 566276696}
   - {fileID: 2114418398}
   - {fileID: 1991537272890687182}
-  - {fileID: 1514790593}
+  - {fileID: 1453913628}

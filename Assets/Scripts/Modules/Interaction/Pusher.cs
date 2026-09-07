@@ -1,4 +1,3 @@
-using AiEditorToolsSdk.Domain.Abstractions.Services;
 using UnityEngine;
 
 [RequireComponent(typeof(IMovement))]

@@ -88,7 +88,6 @@ public class MountController : MonoBehaviour, IPlayerActiveListener
 
     public void ChangeState(IMountState newState)
     {
-        Debug.Log($"<color=magenta>[MountController]</color> Смяна на състоянието към: {newState.GetType().Name}");
         _currentState?.Exit();
         _currentState = newState;
         _currentState?.Enter();

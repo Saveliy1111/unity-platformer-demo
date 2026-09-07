@@ -10455,5 +10455,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameAssembly::GroundNavigationStrategy
   _turnCooldown: 0.3
   _jumpCooldownTimer:
-    _minTime: 1
-    _maxTime: 3
+    _minTime: 0.3
+    _maxTime: 1
