@@ -18,7 +18,7 @@ The code architecture is not perfect but I tried my best to keep it separated pr
 ![Spider Chase](docs/media/gifs/spider-chase.gif)
 
 ### Combat
-![Green'kor Combat](docs/media/gifs/green-kor-combat.gif)
+![Green'kor Combat](docs/media/gifs/green'kor-combat.gif)
 ![Pinkus Combat 1](docs/media/gifs/pinkus-combat.gif)
 ![Pinkus Combat 2](docs/media/gifs/pinkus-combat-2.gif)
 
@@ -26,6 +26,9 @@ The code architecture is not perfect but I tried my best to keep it separated pr
 ![Cooperation 1](docs/media/gifs/cooperation-1.gif)
 ![Cooperation 2](docs/media/gifs/cooperation-2.gif)
 ![Cooperation 3](docs/media/gifs/cooperation-3.gif)
+
+### Mount System
+![Mount](docs/media/gifs/mount.gif)
 
 ### Extra
 ![Chained Weight](docs/media/gifs/chained-weight.gif)
